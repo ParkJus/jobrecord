@@ -9,6 +9,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/auth/login").setViewName("auth/login");
+        registry.addViewController("/Make").setViewName("resume/Make");
         registry.addViewController("/auth/signup").setViewName("auth/signup");
         // 2233076 10주차 추가: 비밀번호 재설정 페이지
         registry.addViewController("/auth/password-reset").setViewName("auth/password-reset");
