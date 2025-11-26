@@ -215,7 +215,6 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
     display: flex;
     flex-direction: column; 
-    overflow: hidden;
     transition: box-shadow 0.2s;
 }
 
@@ -227,6 +226,10 @@
     flex-grow: 1; 
     background-color: #F8F8F8; 
     border-bottom: 1px solid var(--border-color);
+    
+    /* ★★★ 추가하세요 (위쪽 모서리 둥글게) ★★★ */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .draft-card-info {
@@ -247,6 +250,63 @@
     height: 18px; 
     display: flex;
     align-items: center;
+}
+/* 옵션 버튼 래퍼 (위치 기준점) */
+.draft-options-wrapper {
+    position: relative;
+}
+
+.draft-options-button {
+    background: none;
+    border: none;
+    color: var(--color-primary-text);
+    cursor: pointer;
+    padding: 0;
+    height: 18px; 
+    display: flex;
+    align-items: center;
+}
+/* ★★★ 드롭다운 메뉴 스타일 ★★★ */
+.draft-dropdown-menu {
+    display: none; /* 평소엔 숨김 */
+    position: absolute;
+    top: 100%; /* 버튼 바로 아래 */
+    right: 0;
+    background-color: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10;
+    min-width: 120px;
+    padding: 5px 0;
+}
+
+/* 자바스크립트로 active 클래스가 붙으면 보임 */
+.draft-dropdown-menu.active {
+    display: block;
+}
+
+.draft-dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.draft-dropdown-menu li a {
+    display: block;
+    padding: 8px 15px;
+    font-size: 13px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.1s;
+}
+
+.draft-dropdown-menu li a:hover {
+    background-color: #F5F5F5;
+}
+
+.draft-dropdown-menu li a.delete-option {
+    color: #FF4D4D; /* 삭제 버튼 빨간색 강조 */
 }
 
 /* B. '템플릿' 섹션 */
@@ -301,4 +361,57 @@
     .template-grid {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
     }
+}
+/* === 프로필 드롭다운 메뉴 스타일 === */
+
+/* 메뉴 박스 디자인 */
+.profile-dropdown-menu {
+    display: none; /* 평소엔 숨김 */
+    position: absolute;
+    top: 100%;      /* 프로필 바로 아래 */
+    right: 0;       /* 오른쪽 정렬 */
+    margin-top: 10px; /* 살짝 띄우기 */
+    background-color: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 1000;
+    min-width: 160px; /* 메뉴 너비 */
+    padding: 8px 0;
+}
+
+/* 활성화되면 보이기 */
+.profile-dropdown-menu.active {
+    display: block;
+}
+
+.profile-dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-dropdown-menu li a {
+    display: block;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.1s;
+}
+
+.profile-dropdown-menu li a:hover {
+    background-color: #F5F5F5;
+}
+
+/* 로그아웃 버튼 스타일 (선택사항) */
+.profile-dropdown-menu li a.logout-option {
+    color: #FF4D4D;
+}
+
+/* 메뉴 내부 구분선 */
+.profile-dropdown-menu .separator-line {
+    height: 1px;
+    background-color: #E0E0E0;
+    margin: 5px 0;
 }
